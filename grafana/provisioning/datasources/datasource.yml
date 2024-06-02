@@ -1,6 +1,9 @@
 # config file version
 apiVersion: 1
 
+deleteDatasources:
+  - name: Prometheus
+    orgId: 1
 
 # list of datasources to insert/update depending
 # whats available in the database
@@ -18,9 +21,9 @@ datasources:
   # <string> database password, if used
   password:
   # <string> database user, if used
-  user:
+  user: ednkv2ik47m68a
   # <string> database name, if used
-  database:
+  database: 
   # <bool> enable/disable basic auth
   basicAuth: false
   # <string> basic auth username, if used
