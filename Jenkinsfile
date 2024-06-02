@@ -17,8 +17,6 @@ pipeline {
         stage('Stop previous artifact'){
 		    steps {
                 sh "docker compose down -v"
-				sh "docker rm -f $(docker ps -a -q)"
-				sh "docker volume rm $(docker volume ls -q)"
             } 
 		}
         stage('Deploy new artifact'){
