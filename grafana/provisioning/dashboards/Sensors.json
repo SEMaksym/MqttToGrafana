@@ -22,10 +22,7 @@
   "links": [],
   "panels": [
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "ednkv2ik47m68a"
-      },
+      "datasource": {},
       "description": "Wind",
       "fieldConfig": {
         "defaults": {
