@@ -11,6 +11,7 @@ datasources:
   # <string, required> name of the datasource. Required
 - name: prometheus
   # <string, required> datasource type. Required
+  uid: H8joYFVGz
   type: prometheus
   # <string, required> access mode. direct or proxy. Required
   access: proxy
