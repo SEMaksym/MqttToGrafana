@@ -37,16 +37,16 @@ metrics:
    const_labels:
      sensor_type: t  
 
-- prom_name: mqtt2prometheus_humidity
-  mqtt_name: "h"
-  help: "humidity"
-  type: gauge
-  const_labels:
-    sensor_type: t     
+ - prom_name: mqtt2prometheus_humidity
+   mqtt_name: "h"
+   help: "humidity"
+   type: gauge
+   const_labels:
+     sensor_type: t     
 
-- prom_name: mqtt2prometheus_wind
-  mqtt_name: "w"
-  help: "wind"
-  type: gauge
-  const_labels:
-    sensor_type: t 
+ - prom_name: mqtt2prometheus_wind
+   mqtt_name: "w"
+   help: "wind"
+   type: gauge
+   const_labels:
+     sensor_type: t 
