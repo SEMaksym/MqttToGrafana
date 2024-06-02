@@ -26,7 +26,7 @@ pipeline {
         } 
 		stage('Test'){
 		    steps{
-                sh 'mosquitto_pub -d -t 'build/status' -m "succses"'
+                sh "mosquitto_pub -d -t 'build/status' -m 'succses'"
 			}
 		}
         
