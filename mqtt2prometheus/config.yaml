@@ -31,32 +31,22 @@ json_parsing:
 # This is a list of valid metrics. Only metrics listed here will be exported
 metrics:
  - prom_name: mqtt2prometheus_temperature
-
-  ## JSON Path of the metric in our MQTT JSON message
    mqtt_name: "t"
-
-  ## Prometheus help text for this metric
    help: "Temperature"
-
-  ## Prometheus type for this metric.
-  ## Valid values are: "gauge" and "counter"
    type: gauge
-
-  ## Map of string to string for constant labels.
-  ## The labels will be attached to every Prometheus metric.
    const_labels:
      sensor_type: t  
 
 - prom_name: mqtt2prometheus_humidity
-   mqtt_name: "h"
-   help: "humidity"
-   type: gauge
-   const_labels:
-     sensor_type: t     
+  mqtt_name: "h"
+  help: "humidity"
+  type: gauge
+  const_labels:
+    sensor_type: t     
 
 - prom_name: mqtt2prometheus_wind
-   mqtt_name: "w"
-   help: "wind"
-   type: gauge
-   const_labels:
-     sensor_type: t 
+  mqtt_name: "w"
+  help: "wind"
+  type: gauge
+  const_labels:
+    sensor_type: t 
