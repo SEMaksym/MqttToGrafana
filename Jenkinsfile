@@ -17,6 +17,9 @@ pipeline {
         stage('Stop previous artifact'){
 		    steps {
                 sh "docker compose down -v"
+				sh "docker stop \$(docker ps -q) || true"
+                sh "docker container prune --force"
+                sh "docker image prune --force"
             } 
 		}
         stage('Deploy new artifact'){
