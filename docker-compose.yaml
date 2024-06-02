@@ -1,0 +1,77 @@
+---
+
+volumes:
+  prometheus_mqtt-data:
+    driver: local
+  grafana_mqtt-data:
+    driver: local
+  mqtt_config:
+  mqtt_data:
+  mqtt_log:
+
+services:
+
+  mqtt2prometheus:
+    image: ghcr.io/hikhvar/mqtt2prometheus:latest
+    container_name: mqtt2prometheus
+    ports:
+      - 9641:9641
+    volumes:
+      - ./mqtt2prometheus/config.yaml:/config.yaml
+
+  mosquitto:
+    image: eclipse-mosquitto
+    hostname: mosquitto
+    container_name: mosquitto
+    restart: unless-stopped
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+    volumes:
+      - ./mqtt_broker/config:/mosquitto/config:rw
+      - ./mqtt_broker/mqtt_data:/mosquitto/data:rw
+      - ./mqtt_broker/mqtt_log:/mosquitto/log:rw
+      
+  prometheus_mqtt:
+    image: docker.io/prom/prometheus:latest
+    container_name: prometheus_mqtt
+    ports:
+      - 9090:9090
+    command: "--config.file=/etc/prometheus/prometheus.yaml"
+    volumes:
+      - ./prometheus/prometheus.yaml:/etc/prometheus/prometheus.yaml:ro
+      - prometheus_mqtt-data:/prometheus
+    restart: unless-stopped
+    
+  grafana_mqtt:
+    image: docker.io/grafana/grafana-oss:latest
+    container_name: grafana_mqtt
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana_mqtt-data:/var/lib/grafana
+    restart: unless-stopped
+    
+  node_exporter_mqtt:
+    image: quay.io/prometheus/node-exporter:latest
+    container_name: node_exporter_mqtt
+    command: "--path.rootfs=/host"
+    pid: host
+    restart: unless-stopped
+    volumes:
+      - /:/host:ro,rslave
+      
+  cadvisor_mqtt:
+    image: gcr.io/cadvisor/cadvisor:latest
+    container_name: cadvisor_mqtt
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:ro
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+      - /dev/disk/:/dev/disk:ro
+    devices:
+      - /dev/kmsg
+    privileged: true
+    restart: unless-stopped
+    
