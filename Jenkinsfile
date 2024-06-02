@@ -16,7 +16,7 @@ pipeline {
         }
         stage('Stop previous artifact'){
 		    steps {
-                sh "docker compose down -v"
+                sh "docker compose down"
             } 
 		}
         stage('Deploy new artifact'){
