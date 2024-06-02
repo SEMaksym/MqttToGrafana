@@ -23,7 +23,6 @@ services:
     image: eclipse-mosquitto
     hostname: mosquitto
     container_name: mosquitto
-    restart: unless-stopped
     ports:
       - "1883:1883"
       - "9001:9001"
@@ -41,7 +40,6 @@ services:
     volumes:
       - ./prometheus/prometheus.yaml:/etc/prometheus/prometheus.yaml:ro
       - prometheus_mqtt-data:/prometheus
-    restart: unless-stopped
     
   grafana_mqtt:
     image: docker.io/grafana/grafana-oss:latest
@@ -50,14 +48,12 @@ services:
       - "3000:3000"
     volumes:
       - grafana_mqtt-data:/var/lib/grafana
-    restart: unless-stopped
     
   node_exporter_mqtt:
     image: quay.io/prometheus/node-exporter:latest
     container_name: node_exporter_mqtt
     command: "--path.rootfs=/host"
     pid: host
-    restart: unless-stopped
     volumes:
       - /:/host:ro,rslave
       
@@ -73,5 +69,4 @@ services:
     devices:
       - /dev/kmsg
     privileged: true
-    restart: unless-stopped
     
