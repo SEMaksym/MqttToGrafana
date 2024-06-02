@@ -21,14 +21,10 @@ pipeline {
 		}
         stage('Deploy new artifact'){
             steps{
-                sh "docker compose up"
+                sh "docker compose up -d --build "
             } 
         } 
-		stage('Test'){
-		    steps{
-                sh "mosquitto_pub -d -t 'build/status' -m 'succses'"
-			}
-		}
+
         
     } 
 
