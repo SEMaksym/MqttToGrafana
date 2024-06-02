@@ -48,6 +48,7 @@ services:
       - "3000:3000"
     volumes:
       - grafana_mqtt-data:/var/lib/grafana
+      - ./grafana/provisioning/:/etc/grafana/provisioning/
     
   node_exporter_mqtt:
     image: quay.io/prometheus/node-exporter:latest
