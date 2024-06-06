@@ -13,7 +13,7 @@ groups:
               relativeTimeRange:
                 from: 600
                 to: 0
-              datasourceUid: ednkv2ik47m68a
+              datasourceUid: 
               model:
                 disableTextWrap: false
                 editorMode: builder
