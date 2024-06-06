@@ -13,7 +13,7 @@ groups:
               relativeTimeRange:
                 from: 600
                 to: 0
-              datasourceUid: 
+              datasourceUid: luckydays
               model:
                 disableTextWrap: false
                 editorMode: builder
