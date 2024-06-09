@@ -47,6 +47,10 @@ groups:
                         params: []
                         type: last
                       type: query
+                      unloadEvaluator:
+                        params:
+                            - 40
+                        type: lt
                 datasource:
                     type: __expr__
                     uid: __expr__
