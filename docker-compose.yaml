@@ -49,7 +49,7 @@ services:
     volumes:
       - grafana_mqtt-data:/var/lib/grafana
       - ./grafana/provisioning/:/etc/grafana/provisioning/
-    
+      - ./grafana/grafana.ini:/etc/grafana/grafana.ini
   node_exporter_mqtt:
     image: quay.io/prometheus/node-exporter:latest
     container_name: node_exporter_mqtt
