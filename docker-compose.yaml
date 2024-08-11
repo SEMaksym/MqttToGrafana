@@ -42,7 +42,7 @@ services:
       - prometheus_mqtt-data:/prometheus
     
   grafana_mqtt:
-    image: grafana/grafana:9.2.6
+    image: grafana/grafana:9.3.1
     container_name: grafana_mqtt
     ports:
       - "3000:3000"

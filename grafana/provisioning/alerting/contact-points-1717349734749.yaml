@@ -1,0 +1,23 @@
+apiVersion: 1
+contactPoints:
+    - orgId: 1
+      name: Telegram
+      receivers:
+        - uid: adnkvncn124g1a
+          type: telegram
+          settings:
+            bottoken: 7166668803:AAGIXZeEMtrAp_zWYVbBLRyiYD2IAkNdHAk
+            chatid: "380552855"
+            disable_notification: false
+            disable_web_page_preview: false
+            message: '{{ template "Simple" .}} '
+            protect_content: false
+          disableResolveMessage: false
+    - orgId: 1
+      name: email receiver
+      receivers:
+        - uid: adnkvncn124g0b
+          type: email
+          settings:
+            addresses: <example@email.com>
+          disableResolveMessage: false
